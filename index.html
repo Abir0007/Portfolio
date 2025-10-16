@@ -89,12 +89,12 @@
         .cursor-dot {
             width: 8px;
             height: 8px;
-            background-color: #c026d3; 
+            background-color: #a3e635; /* Changed to lime-400 for better contrast */
         }
         .cursor-outline {
             width: 40px;
             height: 40px;
-            background-color: rgba(192, 38, 211, 0.2);
+            background-color: rgba(163, 230, 53, 0.2); /* Changed to lime-400 with opacity */
         }
         body:hover .cursor-dot, body:hover .cursor-outline {
             opacity: 1;
@@ -106,7 +106,7 @@
         }
         .cursor-link-hover .cursor-outline {
             transform: translate(-50%, -50%) scale(1.5);
-            background-color: rgba(192, 38, 211, 0.3);
+            background-color: rgba(163, 230, 53, 0.3); /* Changed to lime-400 with opacity */
         }
         /* Animated background for Hero */
         .hero-animated-bg {
@@ -352,7 +352,7 @@
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Featured Work</h2>
                     <p class="text-gray-400 mt-4">A glimpse into some of the brands I've helped shine online.</p>
                 </div>
-                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px] gap-4">
+                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <!-- Portfolio items will be injected here by JavaScript -->
                 </div>
             </div>
@@ -465,78 +465,78 @@
         // colSpan/rowSpan: how many columns/rows the item should take up.
         // delay: the animation delay for the item.
         const portfolioData = [
-        {
-          imageSrc: "/img/gfx/AVOA.jpg",
-          title: "Aviator AO Poster",
-          category: "Social Media Design",
-          colSpan: "md:col-span-2",
-          rowSpan: "md:row-span-2",
-          delay: "100",
-        },
-        {
-          imageSrc: "/img/gfx/CP_Poster2.jpg",
-          title: "Lifestyle Blogger",
-          category: "Pinterest Graphics",
-          colSpan: "md:col-span-1",
-          rowSpan: "md:row-span-1",
-          delay: "200",
-        },
-        {
-          imageSrc: "/img/gfx/SkyTorqueGT.jpg",
-          title: "Tech Startup",
-          category: "LinkedIn Content",
-          colSpan: "md:col-span-1",
-          rowSpan: "md:row-span-1",
-          delay: "300",
-        },
-        {
-          imageSrc: "/img/gfx/Jettline Classic.jpg",
-          title: "Food Cafe",
-          category: "Facebook Ads",
-          colSpan: "md:col-span-1",
-          rowSpan: "md:row-span-1",
-          delay: "400",
-        },
-        {
-          imageSrc: "/img/gfx/Crimson Luxe.jpg",
-          title: "Fitness App",
-          category: "Content Series",
-          colSpan: "md:col-span-1",
-          rowSpan: "md:row-span-1",
-          delay: "500",
-        },
-        {
-          imageSrc: "/img/gfx/Noir Crest.jpg",
-          title: "Podcast Branding",
-          category: "YouTube Thumbnails",
-          colSpan: "md:col-span-2",
-          rowSpan: "md:row-span-1",
-          delay: "600",
-        },
-        {
-          imageSrc: "/img/gfx/OG poster.jpg",
-          title: "Web Agency",
-          category: "Landing Page Design",
-          colSpan: "md:col-span-2",
-          rowSpan: "md:row-span-1",
-          delay: "700",
-        },
-        {
-          imageSrc: "/img/gfx/Polariser Poster.jpg",
-          title: "Music Artist",
-          category: "EP Cover Art",
-          colSpan: "md:col-span-1",
-          rowSpan: "md:row-span-1",
-          delay: "800",
-        },
-        {
-          imageSrc: "/img/gfx/CPrime_1_revised.jpg",
-          title: "NFT Project",
-          category: "Social Media Art",
-          colSpan: "md:col-span-1",
-          rowSpan: "md:row-span-1",
-          delay: "900",
-        },
+            {
+                imageSrc: "/img/gfx/AVOA.jpg",
+                title: "Aviator AO Poster",
+                category: "Social Media Design",
+                colSpan: "md:col-span-2",
+                size: "aspect-square",
+                delay: "100",
+            },
+            {
+                imageSrc: "/img/gfx/CP_Poster2.jpg",
+                title: "Lifestyle Blogger",
+                category: "Pinterest Graphics",
+                colSpan: "md:col-span-1",
+                size: "aspect-square",
+                delay: "200",
+            },
+            {
+                imageSrc: "/img/gfx/OG poster.jpg",
+                title: "Tech Startup",
+                category: "LinkedIn Content",
+                colSpan: "md:col-span-1",
+                size: "aspect-square",
+                delay: "300",
+            },
+            {
+                imageSrc: "/img/gfx/Jettline Classic.jpg",
+                title: "Food Cafe",
+                category: "Facebook Ads",
+                colSpan: "md:col-span-1",
+                size: "aspect-square",
+                delay: "400",
+            },
+            {
+                imageSrc: "/img/gfx/Crimson Luxe.jpg",
+                title: "Fitness App",
+                category: "Content Series",
+                colSpan: "md:col-span-1",
+                size: "aspect-square",
+                delay: "500",
+            },
+            {
+                imageSrc: "/img/gfx/Noir Crest.jpg",
+                title: "Podcast Branding",
+                category: "YouTube Thumbnails",
+                colSpan: "md:col-span-2",
+                size: "aspect-square",
+                delay: "600",
+            },
+            {
+                imageSrc: "/img/gfx/Gemini_Generated_Image_rsk7parsk7parsk7.png",
+                title: "3D Web Solar Model (3WSM)",
+                category: "<a href='https://solar-3d-test.netlify.app/' target='_blank' class='underline hover:text-lime-400'>https://solar-3d-test.netlify.app/</a>",
+                colSpan: "md:col-span-2",
+                size: "aspect-square",
+                delay: "700",
+            },
+            {
+                imageSrc: "/img/gfx/Polariser Poster.jpg",
+                title: "Music Artist",
+                category: "EP Cover Art",
+                colSpan: "md:col-span-1",
+                size: "aspect-square",
+                delay: "800",
+            },
+            {
+                imageSrc: "/img/gfx/CPrime_1_revised.jpg",
+                title: "NFT Project",
+                category: "Social Media Art",
+                colSpan: "md:col-span-1",
+                size: "aspect-square",
+                delay: "900",
+            },
       ];
 
 
@@ -605,16 +605,18 @@
             portfolioGrid.innerHTML = ''; // Clear existing items
             portfolioData.forEach(item => {
                 const portfolioItem = document.createElement('div');
-                portfolioItem.className = `${item.colSpan} ${item.rowSpan} relative overflow-hidden rounded-2xl group portfolio-item`;
+                portfolioItem.className = `${item.colSpan} relative overflow-hidden rounded-2xl group portfolio-item ${item.size}`;
                 portfolioItem.setAttribute('data-aos', 'zoom-in');
                 portfolioItem.setAttribute('data-aos-delay', item.delay);
 
                 portfolioItem.innerHTML = `
-                    <img src="${item.imageSrc}" alt="Portfolio Project: ${item.title}">
-                    <div class="absolute inset-0 bg-black/70 flex items-end p-6 justify-start opacity-0 group-hover:opacity-100 transition-opacity duration-300 overlay">
-                        <div>
-                            <h3 class="text-xl font-bold text-white">${item.title}</h3>
-                            <p class="text-gray-300">${item.category}</p>
+                    <div class="w-full h-full">
+                        <img src="${item.imageSrc}" alt="Portfolio Project: ${item.title}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/70 flex items-end p-6 justify-start opacity-0 group-hover:opacity-100 transition-opacity duration-300 overlay">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">${item.title}</h3>
+                                <p class="text-gray-300">${item.category}</p>
+                            </div>
                         </div>
                     </div>
                 `;
