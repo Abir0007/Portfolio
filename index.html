@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,50 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
+        *,
+        *::before,
+        *::after {
+            cursor: none !important;
+        }
+
         body {
             font-family: 'JetBrains Mono', monospace;
             background-color: #000000;
             cursor: none;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4, h5, h6, .font-title {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-title {
             font-family: 'Poppins', sans-serif;
         }
+
         .hero-gradient-text {
             background: linear-gradient(135deg, #c026d3, #a21caf);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .section-glow {
             box-shadow: 0 0 70px rgba(162, 28, 175, 0.1), 0 0 90px rgba(162, 28, 175, 0.1);
         }
+
         .section-bg-glow {
             position: relative;
             z-index: 1;
         }
+
         .section-bg-glow::before {
             content: '';
             position: absolute;
@@ -48,34 +68,42 @@
         .portfolio-item {
             cursor: pointer;
         }
+
         .portfolio-item:hover .overlay {
             opacity: 1;
         }
+
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
+
         .portfolio-item:hover img {
             transform: scale(1.05);
         }
+
         /* Glassmorphism Card Effect */
         .glass-card {
-            background: rgba(17, 24, 39, 0.5); /* gray-900 with opacity */
+            background: rgba(17, 24, 39, 0.5);
+            /* gray-900 with opacity */
             -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
+
         .glass-card:hover {
             background: rgba(17, 24, 39, 0.7);
             border-color: rgba(192, 38, 211, 0.5);
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
+
         /* Custom Cursor */
-        .cursor-dot, .cursor-outline {
+        .cursor-dot,
+        .cursor-outline {
             pointer-events: none;
             position: fixed;
             top: 50%;
@@ -86,50 +114,73 @@
             opacity: 0;
             transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
         }
+
         .cursor-dot {
             width: 8px;
             height: 8px;
-            background-color: #a3e635; /* Changed to lime-400 for better contrast */
+            background-color: #a3e635;
+            /* lime-400 for better contrast */
         }
+
         .cursor-outline {
             width: 40px;
             height: 40px;
-            background-color: rgba(163, 230, 53, 0.2); /* Changed to lime-400 with opacity */
+            background-color: rgba(163, 230, 53, 0.2);
+            /* lime-400 with opacity */
         }
-        body:hover .cursor-dot, body:hover .cursor-outline {
+
+        body:hover .cursor-dot,
+        body:hover .cursor-outline {
             opacity: 1;
         }
 
         .cursor-link-hover .cursor-dot {
-            transform: translate(-50%, -50%) scale(0.5);
-            background-color: transparent;
+            transform: translate(-50%, -50%) scale(1.8);
+            background-color: #c026d3;
+            /* fuchsia brand accent on hover */
         }
+
         .cursor-link-hover .cursor-outline {
-            transform: translate(-50%, -50%) scale(1.5);
-            background-color: rgba(163, 230, 53, 0.3); /* Changed to lime-400 with opacity */
+            transform: translate(-50%, -50%) scale(1.6);
+            background-color: rgba(192, 38, 211, 0.15);
+            /* fuchsia tint ring on hover */
         }
+
         /* Animated background for Hero */
         .hero-animated-bg {
-             background: linear-gradient(300deg, #000000, #111827, #000000);
-             background-size: 200% 200%;
-             animation: gradient-animation 16s ease infinite;
-             position: relative;
-             overflow: hidden;
+            background: linear-gradient(300deg, #000000, #111827, #000000);
+            background-size: 200% 200%;
+            animation: gradient-animation 16s ease infinite;
+            position: relative;
+            overflow: hidden;
         }
+
         @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
+
         /* Skill tag hover */
         .skill-tag {
             transition: all 0.2s ease;
         }
+
         .skill-tag:hover {
             transform: scale(1.1);
-            background-color: #a3e635; /* Lime accent */
+            background-color: #a3e635;
+            /* Lime accent */
             color: #111827;
         }
+
         /* Mobile menu gloss */
         #mobile-menu {
             background-color: rgba(17, 24, 39, 0.8);
@@ -137,14 +188,32 @@
             -webkit-backdrop-filter: blur(12px);
             backdrop-filter: blur(12px);
         }
+
+        /* Video Software Tag */
+        .video-tag {
+            background: rgba(162, 28, 175, 0.7);
+            /* fuchsia translucent */
+            color: #ffffff;
+            font-size: 0.75rem;
+            /* text-xs */
+            font-family: 'Poppins', sans-serif;
+            padding: 0.125rem 0.25rem;
+            /* py-0.5 px-1 */
+            border-radius: 0.25rem;
+            /* rounded */
+            text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
         /* CTA Accent Glow */
         .cta-button {
             transition: all 0.3s ease-in-out;
         }
+
         .cta-button:hover {
             transform: scale(1.05);
         }
-        
+
         /* Hero Animated Orbs */
         .hero-orb-container {
             position: absolute;
@@ -154,12 +223,14 @@
             height: 100%;
             z-index: 0;
         }
+
         .hero-orb {
             position: absolute;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(192, 38, 211, 0.4) 0%, rgba(192, 38, 211, 0) 70%);
             animation: float 20s infinite ease-in-out;
         }
+
         .hero-orb:nth-child(1) {
             width: 200px;
             height: 200px;
@@ -167,6 +238,7 @@
             left: 15%;
             animation-duration: 25s;
         }
+
         .hero-orb:nth-child(2) {
             width: 300px;
             height: 300px;
@@ -175,6 +247,7 @@
             animation-duration: 30s;
             animation-delay: -5s;
         }
+
         .hero-orb:nth-child(3) {
             width: 150px;
             height: 150px;
@@ -183,7 +256,8 @@
             animation-duration: 18s;
             animation-delay: -10s;
         }
-         .hero-orb:nth-child(4) {
+
+        .hero-orb:nth-child(4) {
             width: 100px;
             height: 100px;
             top: 80%;
@@ -191,23 +265,45 @@
             animation-duration: 22s;
             animation-delay: -2s;
         }
+
         @keyframes float {
-            0% { transform: translate(0, 0); }
-            50% { transform: translate(40px, 80px) scale(1.2); }
-            100% { transform: translate(0, 0); }
-        }
-        
-        @media (max-width: 768px) {
-            .cursor-dot, .cursor-outline {
-                display: none;
+            0% {
+                transform: translate(0, 0);
             }
+
+            50% {
+                transform: translate(40px, 80px) scale(1.2);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none !important;
+            }
+
             body {
                 cursor: auto;
             }
         }
 
+        /* Hide scrollbars but keep horizontal scroll functionality */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
+
 <body class="text-gray-200">
 
     <div class="cursor-dot"></div>
@@ -221,7 +317,9 @@
                 <a href="#about" class="hover:text-fuchsia-400 transition-colors">About</a>
                 <a href="#services" class="hover:text-fuchsia-400 transition-colors">Services</a>
                 <a href="#portfolio" class="hover:text-fuchsia-400 transition-colors">Portfolio</a>
-                <a href="#contact" class="bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold px-5 py-2 rounded-lg transition-colors cta-button">Contact Me</a>
+                <a href="#contact"
+                    class="bg-lime-400 hover:bg-lime-500 text-gray-900 font-semibold px-5 py-2 rounded-lg transition-colors cta-button">Contact
+                    Me</a>
             </nav>
             <button id="mobile-menu-btn" class="md:hidden">
                 <i data-lucide="menu" class="w-6 h-6"></i>
@@ -240,7 +338,7 @@
 
         <!-- Hero Section -->
         <section id="home" class="py-24 md:py-32 hero-animated-bg">
-             <div class="hero-orb-container">
+            <div class="hero-orb-container">
                 <div class="hero-orb"></div>
                 <div class="hero-orb"></div>
                 <div class="hero-orb"></div>
@@ -248,53 +346,84 @@
             </div>
             <div class="container mx-auto px-6 text-center relative z-10">
                 <div class="max-w-3xl mx-auto" data-aos="fade-up">
-                    <span class="text-fuchsia-400 font-semibold tracking-widest text-sm uppercase">Md.Ahaduzzaman Abir | GRAPHIC DESIGNER</span>
-                    <h1 class="text-4xl md:text-6xl font-bold mt-4 mb-6 leading-tight tracking-tighter">Crafting Scroll-Stopping Graphics for Social Media.</h1>
-                    <p class="text-lg md:text-xl text-gray-400 mb-10">I help brands grow their online presence with stunning visuals that capture attention and drive engagement.</p>
-                    <a href="#portfolio" class="bg-gradient-to-r from-purple-500 to-fuchsia-600 hover:from-purple-600 hover:to-fuchsia-700 text-white font-bold py-4 px-8 rounded-lg text-lg cta-button">View My Work</a>
+                    <span class="text-fuchsia-400 font-semibold tracking-widest text-sm uppercase">Md.Ahaduzzaman Abir |
+                        GRAPHIC DESIGNER</span>
+                    <h1 class="text-4xl md:text-6xl font-bold mt-4 mb-6 leading-tight tracking-tighter">Crafting
+                        Scroll-Stopping Graphics for Social Media.</h1>
+                    <p class="text-lg md:text-xl text-gray-400 mb-10">I help brands grow their online presence with
+                        stunning visuals that capture attention and drive engagement.</p>
+                    <a href="#portfolio"
+                        class="bg-gradient-to-r from-purple-500 to-fuchsia-600 hover:from-purple-600 hover:to-fuchsia-700 text-white font-bold py-4 px-8 rounded-lg text-lg cta-button">View
+                        My Work</a>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 bg-gray-900/50 section-glow rounded-3xl mx-4 md:mx-8 overflow-hidden section-bg-glow">
+        <section id="about"
+            class="py-20 bg-gray-900/50 section-glow rounded-3xl mx-4 md:mx-8 overflow-hidden section-bg-glow">
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-5 gap-12 items-center">
                     <div class="md:col-span-2" data-aos="fade-right">
-                        <img src="/img/main/IMG_0597.jpg" alt="Md.Ahaduzzaman Abir Portrait" class="rounded-2xl w-full h-auto object-cover shadow-2xl">
+                        <img src="/img/main/IMG_0597.jpg" alt="Md.Ahaduzzaman Abir Portrait"
+                            class="rounded-2xl w-full h-auto object-cover shadow-2xl">
                     </div>
                     <div class="md:col-span-3" data-aos="fade-left">
                         <h2 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">From Pixels to Profit.</h2>
-                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">Hey! I'm Abir, a passionate graphic designer with a knack for the fast-paced world of social media marketing. I believe great design isn't just about looking good—it's about telling a story, building a community, and ultimately, driving results. My expertise lies in translating brand strategies into compelling visual content that resonates with today's online audiences.</p>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">Hey! I'm Abir, a passionate graphic
+                            designer with a knack for the fast-paced world of social media marketing. I believe great
+                            design isn't just about looking good—it's about telling a story, building a community, and
+                            ultimately, driving results. My expertise lies in translating brand strategies into
+                            compelling visual content that resonates with today's online audiences.</p>
                         <div class="space-y-6" data-aos="fade-up" data-aos-delay="200">
                             <div>
-                                <h3 class="text-lg font-semibold text-fuchsia-400 mb-3">Design</h3>
+                                <h3 class="text-lg font-semibold text-fuchsia-400 mb-3">Graphic Design</h3>
                                 <div class="flex flex-wrap gap-3">
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Adobe Photoshop (5+ yrs)</span>
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Social Media Designing</span>
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Image Manipulation</span>
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Adobe
+                                        Photoshop</span>
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Adobe
+                                        Lightroom</span>
+                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">AI
+                                        Tool (MidJourney, DALL-E, Nano Banana)</span>
                                 </div>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-fuchsia-400 mb-3">Video</h3>
-                                 <div class="flex flex-wrap gap-3">
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Premiere Pro & After Effects</span>
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Video Editing (1+ yr)</span>
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">CapCut</span>
+                                <h3 class="text-lg font-semibold text-fuchsia-400 mb-3">Video Editing</h3>
+                                <div class="flex flex-wrap gap-3">
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Premiere
+                                        Pro & After Effects</span>
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Davinci
+                                        Resolve</span>
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">CapCut</span>
                                 </div>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-fuchsia-400 mb-3">Development</h3>
+                                <h3 class="text-lg font-semibold text-fuchsia-400 mb-3">Web Development</h3>
                                 <div class="flex flex-wrap gap-3">
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">HTML, CSS, Tailwind</span>
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">ReactJS</span>
-                                    <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Junior Frontend Developer (1+ yr)</span>
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">HTML,
+                                        CSS, Tailwind</span>
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">ReactJS</span>
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Frontend
+                                        Developer</span>
+                                    <span
+                                        class="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-xs skill-tag">Vibe
+                                        coding</span>
                                 </div>
                             </div>
                         </div>
-                         <a href="#contact" class="text-fuchsia-400 font-semibold flex items-center gap-2 group mt-8 hover:text-lime-400 text-sm">
+                        <a href="#contact"
+                            class="text-fuchsia-400 font-semibold flex items-center gap-2 group mt-8 hover:text-lime-400 text-sm">
                             Let's Collaborate
-                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                            <i data-lucide="arrow-right"
+                                class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
                         </a>
                     </div>
                 </div>
@@ -306,24 +435,18 @@
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight">What I Do</h2>
-                    <p class="text-gray-400 mt-4">I offer a range of services to elevate your brand's digital presence.</p>
+                    <p class="text-gray-400 mt-4">I offer a range of services to elevate your brand's digital presence.
+                    </p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Service Card 1 -->
                     <div class="p-8 rounded-2xl text-center glass-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="inline-block p-4 bg-fuchsia-500/10 rounded-xl mb-4">
                             <i data-lucide="gem" class="w-8 h-8 text-fuchsia-400"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Social Media Design</h3>
-                        <p class="text-gray-400 text-sm">Custom-designed posts, stories, and banners for all major platforms.</p>
-                    </div>
-                    <!-- Service Card 2 -->
-                    <div class="p-8 rounded-2xl text-center glass-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="inline-block p-4 bg-fuchsia-500/10 rounded-xl mb-4">
-                            <i data-lucide="image" class="w-8 h-8 text-fuchsia-400"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Image Manipulation</h3>
-                        <p class="text-gray-400 text-sm">Expert photo editing and creative manipulation using Adobe Photoshop.</p>
+                        <p class="text-gray-400 text-sm">Custom-designed posts, stories, and banners for all major
+                            platforms.</p>
                     </div>
                     <!-- Service Card 3 -->
                     <div class="p-8 rounded-2xl text-center glass-card" data-aos="fade-up" data-aos-delay="300">
@@ -331,7 +454,8 @@
                             <i data-lucide="video" class="w-8 h-8 text-fuchsia-400"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Video Editing</h3>
-                        <p class="text-gray-400 text-sm">Engaging short-form videos for Reels & TikTok using Premiere Pro & After Effects.</p>
+                        <p class="text-gray-400 text-sm">Engaging short-form videos for Reels & TikTok using Premiere
+                            Pro & After Effects.</p>
                     </div>
                     <!-- Service Card 4 -->
                     <div class="p-8 rounded-2xl text-center glass-card" data-aos="fade-up" data-aos-delay="400">
@@ -339,7 +463,8 @@
                             <i data-lucide="code" class="w-8 h-8 text-fuchsia-400"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Frontend Development</h3>
-                        <p class="text-gray-400 text-sm">Responsive and stylish landing pages or websites using React & TailwindCSS.</p>
+                        <p class="text-gray-400 text-sm">Responsive and stylish landing pages or websites using React &
+                            TailwindCSS.</p>
                     </div>
                 </div>
             </div>
@@ -348,28 +473,176 @@
         <!-- Portfolio Section -->
         <section id="portfolio" class="py-20 section-bg-glow">
             <div class="container mx-auto px-6">
-                <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+                <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Featured Work</h2>
-                    <p class="text-gray-400 mt-4">A glimpse into some of the brands I've helped shine online.</p>
+                    <p class="text-gray-400 mt-4">A showcase of design, video, and development projects.</p>
                 </div>
-                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <!-- Portfolio items will be injected here by JavaScript -->
+
+                <!-- Category 1: Graphic Design -->
+                <div class="mb-20" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 bg-fuchsia-500/10 rounded-xl text-fuchsia-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-image">
+                                    <rect width="18" height="18" x="3" y="3" rx="2.18" ry="2.18" />
+                                    <circle cx="9" cy="9" r="2" />
+                                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold tracking-tight font-title text-white">Social
+                                    Media & Product Graphics</h3>
+                                <p class="text-xs text-gray-400 mt-0.5">Stunning, high-impact branding and marketing
+                                    designs</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 self-end md:self-auto">
+                            <button onclick="scrollContainer('graphics-scroll', 'left')"
+                                class="p-2.5 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-fuchsia-500 hover:text-fuchsia-400 transition-all active:scale-95 hidden md:flex items-center justify-center cursor-pointer"
+                                aria-label="Scroll Left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-left">
+                                    <path d="m15 18-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <button onclick="scrollContainer('graphics-scroll', 'right')"
+                                class="p-2.5 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-fuchsia-500 hover:text-fuchsia-400 transition-all active:scale-95 hidden md:flex items-center justify-center cursor-pointer"
+                                aria-label="Scroll Right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-right">
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div id="graphics-scroll"
+                            class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4">
+                            <!-- Graphics will be dynamically injected here -->
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Category 2: Video Editing (9:16) -->
+                <div class="mb-20" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 bg-fuchsia-500/10 rounded-xl text-fuchsia-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-video">
+                                    <path d="m22 8-6 4 6 4V8Z" />
+                                    <rect width="14" height="12" x="2" y="6" rx="2" ry="2" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold tracking-tight font-title text-white">Video
+                                    Editing & Motion Graphics</h3>
+                                <p class="text-xs text-gray-400 mt-0.5">Scroll-stopping 9:16 vertical shorts, reels, and
+                                    TikToks</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 self-end md:self-auto">
+                            <button onclick="scrollContainer('videos-scroll', 'left')"
+                                class="p-2.5 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-fuchsia-500 hover:text-fuchsia-400 transition-all active:scale-95 hidden md:flex items-center justify-center cursor-pointer"
+                                aria-label="Scroll Left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-left">
+                                    <path d="m15 18-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <button onclick="scrollContainer('videos-scroll', 'right')"
+                                class="p-2.5 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-fuchsia-500 hover:text-fuchsia-400 transition-all active:scale-95 hidden md:flex items-center justify-center cursor-pointer"
+                                aria-label="Scroll Right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-right">
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div id="videos-scroll"
+                            class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4">
+                            <!-- Videos will be dynamically injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Web Development -->
+                <div class="mb-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2.5 bg-fuchsia-500/10 rounded-xl text-fuchsia-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-code">
+                                    <path d="m18 16 4-4-4-4" />
+                                    <path d="m6 8-4 4 4 4" />
+                                    <path d="m14.5 4-5 16" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold tracking-tight font-title text-white">Web
+                                    Development Projects</h3>
+                                <p class="text-xs text-gray-400 mt-0.5">Interactive, clean, and highly responsive user
+                                    interfaces</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 self-end md:self-auto">
+                            <button onclick="scrollContainer('webdev-scroll', 'left')"
+                                class="p-2.5 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-fuchsia-500 hover:text-fuchsia-400 transition-all active:scale-95 hidden md:flex items-center justify-center cursor-pointer"
+                                aria-label="Scroll Left">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-left">
+                                    <path d="m15 18-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <button onclick="scrollContainer('webdev-scroll', 'right')"
+                                class="p-2.5 rounded-xl bg-gray-900/80 border border-gray-800 hover:border-fuchsia-500 hover:text-fuchsia-400 transition-all active:scale-95 hidden md:flex items-center justify-center cursor-pointer"
+                                aria-label="Scroll Right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-chevron-right">
+                                    <path d="m9 18 6-6-6-6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div id="webdev-scroll"
+                            class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none pb-4">
+                            <!-- Web projects will be dynamically injected here -->
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="py-20 bg-gray-900/50 section-glow rounded-3xl mx-4 md:mx-8 overflow-hidden section-bg-glow">
+        <section id="testimonials"
+            class="py-20 bg-gray-900/50 section-glow rounded-3xl mx-4 md:mx-8 overflow-hidden section-bg-glow">
             <div class="container mx-auto px-6">
-                 <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+                <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
                     <h2 class="text-3xl md:text-4xl font-bold tracking-tight">What Clients Say</h2>
                 </div>
                 <div class="grid lg:grid-cols-3 gap-8">
                     <!-- Testimonial Card 1 -->
                     <div class="glass-card p-8 rounded-2xl" data-aos="fade-right" data-aos-delay="100">
-                        <p class="text-gray-300 mb-6 text-sm">"Abir completely transformed our social media presence. The engagement we've seen since bringing them on board has been incredible. Truly a game-changer!"</p>
+                        <p class="text-gray-300 mb-6 text-sm">"Abir completely transformed our social media presence.
+                            The engagement we've seen since bringing them on board has been incredible. Truly a
+                            game-changer!"</p>
                         <div class="flex items-center">
-                            <img src="https://placehold.co/48x48/000000/c026d3?text=JS" alt="Client 1" class="w-12 h-12 rounded-full mr-4">
+                            <img src="https://placehold.co/48x48/000000/c026d3?text=JS" alt="Client 1"
+                                class="w-12 h-12 rounded-full mr-4">
                             <div>
                                 <h4 class="font-bold font-title">Jane Smith</h4>
                                 <p class="text-xs text-gray-400">Marketing Head, ShopSphere</p>
@@ -378,9 +651,12 @@
                     </div>
                     <!-- Testimonial Card 2 -->
                     <div class="glass-card p-8 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
-                        <p class="text-gray-300 mb-6 text-sm">"The creativity and attention to detail are top-notch. Every graphic is perfectly on-brand and looks fantastic. Highly recommend for any business looking to up their social game."</p>
+                        <p class="text-gray-300 mb-6 text-sm">"The creativity and attention to detail are top-notch.
+                            Every graphic is perfectly on-brand and looks fantastic. Highly recommend for any business
+                            looking to up their social game."</p>
                         <div class="flex items-center">
-                            <img src="https://placehold.co/48x48/000000/c026d3?text=MD" alt="Client 2" class="w-12 h-12 rounded-full mr-4">
+                            <img src="https://placehold.co/48x48/000000/c026d3?text=MD" alt="Client 2"
+                                class="w-12 h-12 rounded-full mr-4">
                             <div>
                                 <h4 class="font-bold font-title">Michael Doe</h4>
                                 <p class="text-xs text-gray-400">Founder, FitFlow</p>
@@ -389,9 +665,12 @@
                     </div>
                     <!-- Testimonial Card 3 -->
                     <div class="glass-card p-8 rounded-2xl" data-aos="fade-left" data-aos-delay="300">
-                        <p class="text-gray-300 mb-6 text-sm">"Working with Abir was a breeze. They understood our vision immediately and delivered high-quality work faster than we expected. A true professional."</p>
+                        <p class="text-gray-300 mb-6 text-sm">"Working with Abir was a breeze. They understood our
+                            vision immediately and delivered high-quality work faster than we expected. A true
+                            professional."</p>
                         <div class="flex items-center">
-                             <img src="https://placehold.co/48x48/000000/c026d3?text=CW" alt="Client 3" class="w-12 h-12 rounded-full mr-4">
+                            <img src="https://placehold.co/48x48/000000/c026d3?text=CW" alt="Client 3"
+                                class="w-12 h-12 rounded-full mr-4">
                             <div>
                                 <h4 class="font-bold font-title">Chloe Williams</h4>
                                 <p class="text-xs text-gray-400">CEO, ConnectTech</p>
@@ -406,25 +685,33 @@
         <section id="contact" class="py-20 section-bg-glow">
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold hero-gradient-text tracking-tighter">Let's Create Together</h2>
-                    <p class="text-gray-400 mt-4">Have a project in mind or just want to say hi? I'd love to hear from you. Fill out the form below.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold hero-gradient-text tracking-tighter">Let's Create Together
+                    </h2>
+                    <p class="text-gray-400 mt-4">Have a project in mind or just want to say hi? I'd love to hear from
+                        you. Fill out the form below.</p>
                 </div>
 
                 <div class="max-w-2xl mx-auto glass-card p-8 md:p-10 rounded-2xl" data-aos="zoom-in-up">
                     <form id="contact-form">
                         <div class="mb-6">
                             <label for="name" class="block text-gray-400 mb-2 text-sm">Name</label>
-                            <input type="text" id="name" name="name" class="w-full bg-slate-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 transition-colors" placeholder="Your Name" required>
+                            <input type="text" id="name" name="name"
+                                class="w-full bg-slate-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 transition-colors"
+                                placeholder="Your Name" required>
                         </div>
                         <div class="mb-6">
-                             <label for="message" class="block text-gray-400 mb-2 text-sm">Message</label>
-                             <textarea id="message" name="message" rows="4" class="w-full bg-slate-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 transition-colors" placeholder="Briefly describe your project or what you're looking for..." required></textarea>
+                            <label for="message" class="block text-gray-400 mb-2 text-sm">Message</label>
+                            <textarea id="message" name="message" rows="4"
+                                class="w-full bg-slate-800/50 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 transition-colors"
+                                placeholder="Briefly describe your project or what you're looking for..."
+                                required></textarea>
                         </div>
-                        
+
                         <div class="text-center mt-6">
-                             <button type="button" id="send-whatsapp-btn" class="text-fuchsia-400 hover:text-lime-400 font-semibold transition-colors w-full flex items-center justify-center gap-2 text-sm cta-button">
-                                 <i data-lucide="message-circle" class="w-5 h-5"></i> Send on WhatsApp
-                             </button>
+                            <button type="button" id="send-whatsapp-btn"
+                                class="text-fuchsia-400 hover:text-lime-400 font-semibold transition-colors w-full flex items-center justify-center gap-2 text-sm cta-button">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i> Send on WhatsApp
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -433,10 +720,13 @@
     </main>
 
     <!-- Image Preview Modal -->
-    <div id="image-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="image-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="modal-content relative max-w-4xl max-h-full transform scale-95 transition-transform duration-300">
-            <img id="modal-image" src="" alt="Portfolio Work Preview" class="rounded-lg shadow-2xl h-auto max-h-[85vh] w-auto max-w-[90vw] object-contain">
-            <button id="close-modal-btn" class="absolute -top-3 -right-3 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 focus:outline-none">
+            <img id="modal-image" src="" alt="Portfolio Work Preview"
+                class="rounded-lg shadow-2xl h-auto max-h-[85vh] w-auto max-w-[90vw] object-contain">
+            <button id="close-modal-btn"
+                class="absolute -top-3 -right-3 bg-white/20 hover:bg-white/30 text-white rounded-full p-2 focus:outline-none">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
         </div>
@@ -449,8 +739,10 @@
             <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                 <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Md.Ahaduzzaman Abir. All Rights Reserved.</p>
                 <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/abir_rehman/" class="text-gray-400 hover:text-fuchsia-400"><i data-lucide="instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/abir-rehman-1947241a3/" class="text-gray-400 hover:text-fuchsia-400"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/abir_rehman/" class="text-gray-400 hover:text-fuchsia-400"><i
+                            data-lucide="instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/abir-rehman-1947241a3/"
+                        class="text-gray-400 hover:text-fuchsia-400"><i data-lucide="linkedin"></i></a>
                     <a href="#" class="text-gray-400 hover:text-fuchsia-400"><i data-lucide="twitter"></i></a>
                     <a href="#" class="text-gray-400 hover:text-fuchsia-400"><i data-lucide="dribbble"></i></a>
                 </div>
@@ -461,83 +753,130 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // --- PORTFOLIO DATA ---
-        // To update your portfolio, just edit the data in this array.
-        // colSpan/rowSpan: how many columns/rows the item should take up.
-        // delay: the animation delay for the item.
-        const portfolioData = [
+        // Edit the configurations below to add, modify, or remove projects.
+
+        // 1. Social Media / Product Graphic Designs (Lightbox Image Modal on click)
+        const graphicDesignData = [
             {
                 imageSrc: "/img/gfx/AVOA.jpg",
                 title: "Aviator AO Poster",
                 category: "Social Media Design",
-                colSpan: "md:col-span-2",
-                size: "aspect-square",
                 delay: "100",
             },
             {
                 imageSrc: "/img/gfx/CP_Poster2.jpg",
                 title: "Lifestyle Blogger",
                 category: "Pinterest Graphics",
-                colSpan: "md:col-span-1",
-                size: "aspect-square",
-                delay: "200",
+                delay: "150",
             },
             {
                 imageSrc: "/img/gfx/OG poster.jpg",
                 title: "Tech Startup",
                 category: "LinkedIn Content",
-                colSpan: "md:col-span-1",
-                size: "aspect-square",
-                delay: "300",
+                delay: "200",
             },
             {
                 imageSrc: "/img/gfx/Jettline Classic.jpg",
                 title: "Food Cafe",
                 category: "Facebook Ads",
-                colSpan: "md:col-span-1",
-                size: "aspect-square",
-                delay: "400",
+                delay: "250",
             },
             {
                 imageSrc: "/img/gfx/Crimson Luxe.jpg",
                 title: "Fitness App",
                 category: "Content Series",
-                colSpan: "md:col-span-1",
-                size: "aspect-square",
-                delay: "500",
+                delay: "300",
             },
             {
                 imageSrc: "/img/gfx/Noir Crest.jpg",
                 title: "Podcast Branding",
                 category: "YouTube Thumbnails",
-                colSpan: "md:col-span-2",
-                size: "aspect-square",
-                delay: "600",
-            },
-            {
-                imageSrc: "/img/gfx/Gemini_Generated_Image_rsk7parsk7parsk7.png",
-                title: "3D Web Solar Model (3WSM)",
-                category: "<a href='https://solar-3d-test.netlify.app/' target='_blank' class='underline hover:text-lime-400'>https://solar-3d-test.netlify.app/</a>",
-                colSpan: "md:col-span-2",
-                size: "aspect-square",
-                delay: "700",
+                delay: "350",
             },
             {
                 imageSrc: "/img/gfx/Polariser Poster.jpg",
                 title: "Music Artist",
                 category: "EP Cover Art",
-                colSpan: "md:col-span-1",
-                size: "aspect-square",
-                delay: "800",
+                delay: "400",
             },
             {
                 imageSrc: "/img/gfx/CPrime_1_revised.jpg",
                 title: "NFT Project",
                 category: "Social Media Art",
-                colSpan: "md:col-span-1",
-                size: "aspect-square",
-                delay: "900",
+                delay: "450",
             },
-      ];
+            {
+                imageSrc: "/img/gfx/Marron lady.jpg",
+                title: "Marron Lady Poster",
+                category: "Creative Manipulation",
+                delay: "500",
+            },
+            {
+                imageSrc: "/img/gfx/SkyTorqueGT.jpg",
+                title: "Sky Torque GT",
+                category: "Product Graphic",
+                delay: "550",
+            }
+        ];
+
+        // 2. Video Editing (9:16 Aspect Ratio, redirects to Google Drive links)
+        // Feel free to replace the placeholder links and gif URLs.
+        const videoEditingData = [
+            {
+                title: "Classic Polariser Sunglass Pitch",
+                category: "Product Ad",
+                gifUrl: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHF6eDh4cHRvNXlpZG04cXAxODZxOW95NTJidGtoZm1kMnVkdmVxbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NsK83X3bemExiEOfkS/giphy.gif",
+                driveLink: "https://drive.google.com/file/d/1CPoBw67VMpUnyA9QuJYDNHCfHHtgMPBZ/view?usp=drive_link",
+                delay: "100",
+                software: "Premiere Pro",
+            },
+            {
+                title: "AO Short 3",
+                category: "Dynamic Reel",
+                gifUrl: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDVzcTR3amdiZ2xheTg4amlzbzhsYnZ0anpwdXliajV2a3ppOXg5ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/GtzMUHQE1kUJT9o6aY/giphy.gif",
+                driveLink: "https://drive.google.com/file/d/1ah8k6DpeGMchVuBeMXPBaxrbSFTpjYIK/view?usp=drive_link",
+                delay: "200",
+                software: "DaVinci Resolve",
+            },
+            {
+                title: "Antifog kit short",
+                category: "Lifestyle / Tik Tok",
+                gifUrl: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmpvaWJ5NzJpZzE3OHhueGFlZmM4ang4eGJtdHQxcHQ2OWN2bWg2OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vj7plEuwF0P1nEqDyS/giphy.gif",
+                driveLink: "https://drive.google.com/file/d/1KrSgFkn-y292BN6nfeasgT5MdbkaT9PK/view?usp=drive_link",
+                delay: "300",
+                software: "DaVinci Resolve",
+            },
+            {
+                title: "AVOG short 2",
+                category: "Motion Graphics",
+                gifUrl: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnVqcmhlcjJpbHgzZTd4cjNxOWh6OGQwajNmdTdvcTVpZThoNml1OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Omhp9TkY5PB0l6LEtr/giphy.gif",
+                driveLink: "https://drive.google.com/file/d/1OmVzq1wZg-B-ygE3uMPPBdPeOJBmVZwH/view?usp=drive_link",
+                delay: "400",
+                software: "Capcut",
+            }
+        ];
+
+        // 3. Web Development Projects (16:9 Landscape Aspect Ratio, redirects to site links)
+        // Edit target links and image sources manually here.
+        const webDevData = [
+            {
+                imageSrc: "/img/web-apps/solarSys.png",
+                title: "3D Solar System Model",
+                category: "Interactive 3D Web App",
+                tech: "HTML, CSS, Three.js",
+                siteLink: "https://solar-3d-test.netlify.app/",
+                delay: "100",
+            },
+            {
+                imageSrc: "/img/web-apps/scentScout.png",
+                title: "Scentscout BD",
+                category: "Web Application",
+                tech: "Next.js, Framer Motion, Tailwind, Vercel, Google AI Studio",
+                siteLink: "https://scentscoutbd.vercel.app/",
+                delay: "200",
+            },
+
+        ];
 
 
         lucide.createIcons();
@@ -565,15 +904,15 @@
                 mobileMenu.classList.add('hidden');
             });
         });
-        
+
         // Custom Cursor Script
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
-        
+
         window.addEventListener('mousemove', (e) => {
             const posX = e.clientX;
             const posY = e.clientY;
-            
+
             cursorDot.style.left = `${posX}px`;
             cursorDot.style.top = `${posY}px`;
 
@@ -583,46 +922,111 @@
             }, { duration: 500, fill: 'forwards' });
         });
 
-        const interactiveElements = document.querySelectorAll('a, button, .portfolio-item, .glass-card, .skill-tag');
+        // Dynamic Cursor Hover States with Event Delegation
         const body = document.querySelector('body');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseover', () => {
+        document.body.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, .portfolio-item, .glass-card, .skill-tag')) {
                 body.classList.add('cursor-link-hover');
-            });
-            el.addEventListener('mouseleave', () => {
+            }
+        });
+        document.body.addEventListener('mouseout', (e) => {
+            if (e.target.closest('a, button, .portfolio-item, .glass-card, .skill-tag')) {
                 body.classList.remove('cursor-link-hover');
-            });
+            }
         });
 
         // --- Portfolio Rendering & Modal Logic ---
-        const portfolioGrid = document.getElementById('portfolio-grid');
         const imageModal = document.getElementById('image-modal');
         const modalContent = imageModal.querySelector('.modal-content');
         const modalImage = document.getElementById('modal-image');
         const closeModalBtn = document.getElementById('close-modal-btn');
 
-        function renderPortfolio() {
-            portfolioGrid.innerHTML = ''; // Clear existing items
-            portfolioData.forEach(item => {
-                const portfolioItem = document.createElement('div');
-                portfolioItem.className = `${item.colSpan} relative overflow-hidden rounded-2xl group portfolio-item ${item.size}`;
-                portfolioItem.setAttribute('data-aos', 'zoom-in');
-                portfolioItem.setAttribute('data-aos-delay', item.delay);
+        // Horizontal Scroll Helper
+        window.scrollContainer = function (containerId, direction) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const card = container.querySelector('.snap-start');
+            const cardWidth = card ? card.clientWidth : 300;
+            const scrollAmount = direction === 'left' ? -(cardWidth + 24) * 2 : (cardWidth + 24) * 2;
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        };
 
-                portfolioItem.innerHTML = `
+        function renderPortfolio() {
+            // Render Graphic Designs
+            const graphicsScroll = document.getElementById('graphics-scroll');
+            graphicsScroll.innerHTML = '';
+            graphicDesignData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `w-72 md:w-80 shrink-0 snap-start aspect-square relative overflow-hidden rounded-2xl portfolio-item cursor-pointer`;
+                card.setAttribute('data-aos', 'zoom-in');
+                card.setAttribute('data-aos-delay', item.delay);
+                card.innerHTML = `
                     <div class="w-full h-full">
-                        <img src="${item.imageSrc}" alt="Portfolio Project: ${item.title}" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/70 flex items-end p-6 justify-start opacity-0 group-hover:opacity-100 transition-opacity duration-300 overlay">
-                            <div>
-                                <h3 class="text-xl font-bold text-white">${item.title}</h3>
-                                <p class="text-gray-300">${item.category}</p>
+                        <img src="${item.imageSrc}" alt="Graphic Design: ${item.title}" class="w-full h-full object-cover">
+                    </div>
+                `;
+                graphicsScroll.appendChild(card);
+            });
+
+            // Render Videos (9:16 Aspect Ratio)
+            const videosScroll = document.getElementById('videos-scroll');
+            videosScroll.innerHTML = '';
+            videoEditingData.forEach(item => {
+                const card = document.createElement('a');
+                card.href = item.driveLink;
+                card.target = "_blank";
+                card.className = `w-56 md:w-64 shrink-0 snap-start aspect-[9/16] relative overflow-hidden rounded-2xl group block glass-card border border-white/10`;
+                card.setAttribute('data-aos', 'zoom-in');
+                card.setAttribute('data-aos-delay', item.delay);
+                card.innerHTML = `
+                    <div class="w-full h-full relative">
+                        <img src="${item.gifUrl}" alt="Video Project: ${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <!-- Software tag in top-left corner -->
+                        <div class="absolute top-2 left-2 bg-gray-800/70 text-xs text-white px-1 py-0.5 rounded video-tag">${item.software}</div>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-14 h-14 flex items-center justify-center rounded-full bg-lime-400 text-gray-900 shadow-lg group-hover:scale-110 group-hover:bg-fuchsia-500 group-hover:text-white transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="translate-x-0.5"><path d="M8 5v14l11-7z"/></svg>
                             </div>
+                            <span class="mt-4 text-xs font-semibold tracking-wider text-lime-400 group-hover:text-fuchsia-400 transition-colors uppercase font-mono">Watch Video</span>
                         </div>
                     </div>
                 `;
-                portfolioGrid.appendChild(portfolioItem);
+                videosScroll.appendChild(card);
             });
-            
+
+            // Render Web Development (16:9 Landscape)
+            const webdevScroll = document.getElementById('webdev-scroll');
+            webdevScroll.innerHTML = '';
+            webDevData.forEach(item => {
+                const card = document.createElement('a');
+                card.href = item.siteLink;
+                card.target = "_blank";
+                card.className = `w-80 md:w-[400px] shrink-0 snap-start aspect-video relative overflow-hidden rounded-2xl group block glass-card border border-white/10`;
+                card.setAttribute('data-aos', 'zoom-in');
+                card.setAttribute('data-aos-delay', item.delay);
+                card.innerHTML = `
+                    <div class="w-full h-full relative">
+                        <img src="${item.imageSrc}" alt="Web Project: ${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/80 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-bold text-white font-title">${item.title}</h3>
+                                <div class="p-1.5 bg-lime-400 text-gray-900 rounded-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                                </div>
+                            </div>
+                            <p class="text-xs text-fuchsia-400 font-mono mb-2">${item.category}</p>
+                            <div class="flex flex-wrap gap-1.5 mt-1">
+                                ${item.tech.split(', ').map(t => `<span class="bg-gray-800/80 text-gray-300 px-2 py-0.5 rounded text-[10px] font-mono">${t}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent group-hover:opacity-0 transition-opacity duration-300">
+                            <h3 class="text-sm font-bold text-white font-title line-clamp-1">${item.title}</h3>
+                        </div>
+                    </div>
+                `;
+                webdevScroll.appendChild(card);
+            });
+
             // Re-attach event listeners after rendering
             attachModalListeners();
         }
@@ -688,13 +1092,14 @@
                 showValidation(messageInput, 'Message is required.');
                 isValid = false;
             }
-            
+
             if (!isValid) return;
-            
+
             let whatsappMessage = `Greetings from the digital cosmos! 🚀 I've just explored your stunning portfolio. My name is ${name}, and I have an idea brewing: "${message}"`;
             const whatsappLink = `https://wa.me/8801623837672?text=${encodeURIComponent(whatsappMessage)}`;
             window.open(whatsappLink, '_blank');
         });
     </script>
 </body>
+
 </html>
